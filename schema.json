@@ -1,1166 +1,1883 @@
-schema {
-  query: Root
-}
-
-"""A single film."""
-type Film implements Node {
-  """The title of this film."""
-  title: String
-
-  """The episode number of this film."""
-  episodeID: Int
-
-  """The opening paragraphs at the beginning of this film."""
-  openingCrawl: String
-
-  """The name of the director of this film."""
-  director: String
-
-  """The name(s) of the producer(s) of this film."""
-  producers: [String]
-
-  """The ISO 8601 date format of film release at original creator country."""
-  releaseDate: String
-  speciesConnection(after: String, first: Int, before: String, last: Int): FilmSpeciesConnection
-  starshipConnection(after: String, first: Int, before: String, last: Int): FilmStarshipsConnection
-  vehicleConnection(after: String, first: Int, before: String, last: Int): FilmVehiclesConnection
-  characterConnection(after: String, first: Int, before: String, last: Int): FilmCharactersConnection
-  planetConnection(after: String, first: Int, before: String, last: Int): FilmPlanetsConnection
-
-  """The ISO 8601 date format of the time that this resource was created."""
-  created: String
-
-  """The ISO 8601 date format of the time that this resource was edited."""
-  edited: String
-
-  """The ID of an object"""
-  id: ID!
-}
-
-"""A connection to a list of items."""
-type FilmCharactersConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [FilmCharactersEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  characters: [Person]
-}
-
-"""An edge in a connection."""
-type FilmCharactersEdge {
-  """The item at the end of the edge"""
-  node: Person
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type FilmPlanetsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [FilmPlanetsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  planets: [Planet]
-}
-
-"""An edge in a connection."""
-type FilmPlanetsEdge {
-  """The item at the end of the edge"""
-  node: Planet
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type FilmsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [FilmsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  films: [Film]
-}
-
-"""An edge in a connection."""
-type FilmsEdge {
-  """The item at the end of the edge"""
-  node: Film
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type FilmSpeciesConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [FilmSpeciesEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  species: [Species]
-}
-
-"""An edge in a connection."""
-type FilmSpeciesEdge {
-  """The item at the end of the edge"""
-  node: Species
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type FilmStarshipsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [FilmStarshipsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  starships: [Starship]
-}
-
-"""An edge in a connection."""
-type FilmStarshipsEdge {
-  """The item at the end of the edge"""
-  node: Starship
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type FilmVehiclesConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [FilmVehiclesEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  vehicles: [Vehicle]
-}
-
-"""An edge in a connection."""
-type FilmVehiclesEdge {
-  """The item at the end of the edge"""
-  node: Vehicle
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""An object with an ID"""
-interface Node {
-  """The id of the object."""
-  id: ID!
-}
-
-"""Information about pagination in a connection."""
-type PageInfo {
-  """When paginating forwards, are there more items?"""
-  hasNextPage: Boolean!
-
-  """When paginating backwards, are there more items?"""
-  hasPreviousPage: Boolean!
-
-  """When paginating backwards, the cursor to continue."""
-  startCursor: String
-
-  """When paginating forwards, the cursor to continue."""
-  endCursor: String
-}
-
-"""A connection to a list of items."""
-type PeopleConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [PeopleEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  people: [Person]
-}
-
-"""An edge in a connection."""
-type PeopleEdge {
-  """The item at the end of the edge"""
-  node: Person
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""An individual person or character within the Star Wars universe."""
-type Person implements Node {
-  """The name of this person."""
-  name: String
-
-  """
-  The birth year of the person, using the in-universe standard of BBY or ABY -
-  Before the Battle of Yavin or After the Battle of Yavin. The Battle of Yavin is
-  a battle that occurs at the end of Star Wars episode IV: A New Hope.
-  """
-  birthYear: String
-
-  """
-  The eye color of this person. Will be "unknown" if not known or "n/a" if the
-  person does not have an eye.
-  """
-  eyeColor: String
-
-  """
-  The gender of this person. Either "Male", "Female" or "unknown",
-  "n/a" if the person does not have a gender.
-  """
-  gender: String
-
-  """
-  The hair color of this person. Will be "unknown" if not known or "n/a" if the
-  person does not have hair.
-  """
-  hairColor: String
-
-  """The height of the person in centimeters."""
-  height: Int
-
-  """The mass of the person in kilograms."""
-  mass: Float
-
-  """The skin color of this person."""
-  skinColor: String
-
-  """A planet that this person was born on or inhabits."""
-  homeworld: Planet
-  filmConnection(after: String, first: Int, before: String, last: Int): PersonFilmsConnection
-
-  """The species that this person belongs to, or null if unknown."""
-  species: Species
-  starshipConnection(after: String, first: Int, before: String, last: Int): PersonStarshipsConnection
-  vehicleConnection(after: String, first: Int, before: String, last: Int): PersonVehiclesConnection
-
-  """The ISO 8601 date format of the time that this resource was created."""
-  created: String
-
-  """The ISO 8601 date format of the time that this resource was edited."""
-  edited: String
-
-  """The ID of an object"""
-  id: ID!
-}
-
-"""A connection to a list of items."""
-type PersonFilmsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [PersonFilmsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  films: [Film]
-}
-
-"""An edge in a connection."""
-type PersonFilmsEdge {
-  """The item at the end of the edge"""
-  node: Film
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type PersonStarshipsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [PersonStarshipsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  starships: [Starship]
-}
-
-"""An edge in a connection."""
-type PersonStarshipsEdge {
-  """The item at the end of the edge"""
-  node: Starship
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type PersonVehiclesConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [PersonVehiclesEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  vehicles: [Vehicle]
-}
-
-"""An edge in a connection."""
-type PersonVehiclesEdge {
-  """The item at the end of the edge"""
-  node: Vehicle
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""
-A large mass, planet or planetoid in the Star Wars Universe, at the time of
-0 ABY.
-"""
-type Planet implements Node {
-  """The name of this planet."""
-  name: String
-
-  """The diameter of this planet in kilometers."""
-  diameter: Int
-
-  """
-  The number of standard hours it takes for this planet to complete a single
-  rotation on its axis.
-  """
-  rotationPeriod: Int
-
-  """
-  The number of standard days it takes for this planet to complete a single orbit
-  of its local star.
-  """
-  orbitalPeriod: Int
-
-  """
-  A number denoting the gravity of this planet, where "1" is normal or 1 standard
-  G. "2" is twice or 2 standard Gs. "0.5" is half or 0.5 standard Gs.
-  """
-  gravity: String
-
-  """The average population of sentient beings inhabiting this planet."""
-  population: Float
-
-  """The climates of this planet."""
-  climates: [String]
-
-  """The terrains of this planet."""
-  terrains: [String]
-
-  """
-  The percentage of the planet surface that is naturally occurring water or bodies
-  of water.
-  """
-  surfaceWater: Float
-  residentConnection(after: String, first: Int, before: String, last: Int): PlanetResidentsConnection
-  filmConnection(after: String, first: Int, before: String, last: Int): PlanetFilmsConnection
-
-  """The ISO 8601 date format of the time that this resource was created."""
-  created: String
-
-  """The ISO 8601 date format of the time that this resource was edited."""
-  edited: String
-
-  """The ID of an object"""
-  id: ID!
-}
-
-"""A connection to a list of items."""
-type PlanetFilmsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [PlanetFilmsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  films: [Film]
-}
-
-"""An edge in a connection."""
-type PlanetFilmsEdge {
-  """The item at the end of the edge"""
-  node: Film
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type PlanetResidentsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [PlanetResidentsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  residents: [Person]
-}
-
-"""An edge in a connection."""
-type PlanetResidentsEdge {
-  """The item at the end of the edge"""
-  node: Person
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type PlanetsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [PlanetsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  planets: [Planet]
-}
-
-"""An edge in a connection."""
-type PlanetsEdge {
-  """The item at the end of the edge"""
-  node: Planet
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-type Root {
-  allFilms(after: String, first: Int, before: String, last: Int): FilmsConnection
-  film(id: ID, filmID: ID): Film
-  allPeople(after: String, first: Int, before: String, last: Int): PeopleConnection
-  person(id: ID, personID: ID): Person
-  allPlanets(after: String, first: Int, before: String, last: Int): PlanetsConnection
-  planet(id: ID, planetID: ID): Planet
-  allSpecies(after: String, first: Int, before: String, last: Int): SpeciesConnection
-  species(id: ID, speciesID: ID): Species
-  allStarships(after: String, first: Int, before: String, last: Int): StarshipsConnection
-  starship(id: ID, starshipID: ID): Starship
-  allVehicles(after: String, first: Int, before: String, last: Int): VehiclesConnection
-  vehicle(id: ID, vehicleID: ID): Vehicle
-
-  """Fetches an object given its ID"""
-  node(
-    """The ID of an object"""
-    id: ID!
-  ): Node
-}
-
-"""A type of person or character within the Star Wars Universe."""
-type Species implements Node {
-  """The name of this species."""
-  name: String
-
-  """The classification of this species, such as "mammal" or "reptile"."""
-  classification: String
-
-  """The designation of this species, such as "sentient"."""
-  designation: String
-
-  """The average height of this species in centimeters."""
-  averageHeight: Float
-
-  """The average lifespan of this species in years, null if unknown."""
-  averageLifespan: Int
-
-  """
-  Common eye colors for this species, null if this species does not typically
-  have eyes.
-  """
-  eyeColors: [String]
-
-  """
-  Common hair colors for this species, null if this species does not typically
-  have hair.
-  """
-  hairColors: [String]
-
-  """
-  Common skin colors for this species, null if this species does not typically
-  have skin.
-  """
-  skinColors: [String]
-
-  """The language commonly spoken by this species."""
-  language: String
-
-  """A planet that this species originates from."""
-  homeworld: Planet
-  personConnection(after: String, first: Int, before: String, last: Int): SpeciesPeopleConnection
-  filmConnection(after: String, first: Int, before: String, last: Int): SpeciesFilmsConnection
-
-  """The ISO 8601 date format of the time that this resource was created."""
-  created: String
-
-  """The ISO 8601 date format of the time that this resource was edited."""
-  edited: String
-
-  """The ID of an object"""
-  id: ID!
-}
-
-"""A connection to a list of items."""
-type SpeciesConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [SpeciesEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  species: [Species]
-}
-
-"""An edge in a connection."""
-type SpeciesEdge {
-  """The item at the end of the edge"""
-  node: Species
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type SpeciesFilmsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [SpeciesFilmsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  films: [Film]
-}
-
-"""An edge in a connection."""
-type SpeciesFilmsEdge {
-  """The item at the end of the edge"""
-  node: Film
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type SpeciesPeopleConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [SpeciesPeopleEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  people: [Person]
-}
-
-"""An edge in a connection."""
-type SpeciesPeopleEdge {
-  """The item at the end of the edge"""
-  node: Person
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A single transport craft that has hyperdrive capability."""
-type Starship implements Node {
-  """The name of this starship. The common name, such as "Death Star"."""
-  name: String
-
-  """
-  The model or official name of this starship. Such as "T-65 X-wing" or "DS-1
-  Orbital Battle Station".
-  """
-  model: String
-
-  """
-  The class of this starship, such as "Starfighter" or "Deep Space Mobile
-  Battlestation"
-  """
-  starshipClass: String
-
-  """The manufacturers of this starship."""
-  manufacturers: [String]
-
-  """The cost of this starship new, in galactic credits."""
-  costInCredits: Float
-
-  """The length of this starship in meters."""
-  length: Float
-
-  """The number of personnel needed to run or pilot this starship."""
-  crew: String
-
-  """The number of non-essential people this starship can transport."""
-  passengers: String
-
-  """
-  The maximum speed of this starship in atmosphere. null if this starship is
-  incapable of atmosphering flight.
-  """
-  maxAtmospheringSpeed: Int
-
-  """The class of this starships hyperdrive."""
-  hyperdriveRating: Float
-
-  """
-  The Maximum number of Megalights this starship can travel in a standard hour.
-  A "Megalight" is a standard unit of distance and has never been defined before
-  within the Star Wars universe. This figure is only really useful for measuring
-  the difference in speed of starships. We can assume it is similar to AU, the
-  distance between our Sun (Sol) and Earth.
-  """
-  MGLT: Int
-
-  """The maximum number of kilograms that this starship can transport."""
-  cargoCapacity: Float
-
-  """
-  The maximum length of time that this starship can provide consumables for its
-  entire crew without having to resupply.
-  """
-  consumables: String
-  pilotConnection(after: String, first: Int, before: String, last: Int): StarshipPilotsConnection
-  filmConnection(after: String, first: Int, before: String, last: Int): StarshipFilmsConnection
-
-  """The ISO 8601 date format of the time that this resource was created."""
-  created: String
-
-  """The ISO 8601 date format of the time that this resource was edited."""
-  edited: String
-
-  """The ID of an object"""
-  id: ID!
-}
-
-"""A connection to a list of items."""
-type StarshipFilmsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [StarshipFilmsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  films: [Film]
-}
-
-"""An edge in a connection."""
-type StarshipFilmsEdge {
-  """The item at the end of the edge"""
-  node: Film
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type StarshipPilotsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [StarshipPilotsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  pilots: [Person]
-}
-
-"""An edge in a connection."""
-type StarshipPilotsEdge {
-  """The item at the end of the edge"""
-  node: Person
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type StarshipsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [StarshipsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  starships: [Starship]
-}
-
-"""An edge in a connection."""
-type StarshipsEdge {
-  """The item at the end of the edge"""
-  node: Starship
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A single transport craft that does not have hyperdrive capability"""
-type Vehicle implements Node {
-  """
-  The name of this vehicle. The common name, such as "Sand Crawler" or "Speeder
-  bike".
-  """
-  name: String
-
-  """
-  The model or official name of this vehicle. Such as "All-Terrain Attack
-  Transport".
-  """
-  model: String
-
-  """The class of this vehicle, such as "Wheeled" or "Repulsorcraft"."""
-  vehicleClass: String
-
-  """The manufacturers of this vehicle."""
-  manufacturers: [String]
-
-  """The cost of this vehicle new, in Galactic Credits."""
-  costInCredits: Float
-
-  """The length of this vehicle in meters."""
-  length: Float
-
-  """The number of personnel needed to run or pilot this vehicle."""
-  crew: String
-
-  """The number of non-essential people this vehicle can transport."""
-  passengers: String
-
-  """The maximum speed of this vehicle in atmosphere."""
-  maxAtmospheringSpeed: Int
-
-  """The maximum number of kilograms that this vehicle can transport."""
-  cargoCapacity: Float
-
-  """
-  The maximum length of time that this vehicle can provide consumables for its
-  entire crew without having to resupply.
-  """
-  consumables: String
-  pilotConnection(after: String, first: Int, before: String, last: Int): VehiclePilotsConnection
-  filmConnection(after: String, first: Int, before: String, last: Int): VehicleFilmsConnection
-
-  """The ISO 8601 date format of the time that this resource was created."""
-  created: String
-
-  """The ISO 8601 date format of the time that this resource was edited."""
-  edited: String
-
-  """The ID of an object"""
-  id: ID!
-}
-
-"""A connection to a list of items."""
-type VehicleFilmsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [VehicleFilmsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  films: [Film]
-}
-
-"""An edge in a connection."""
-type VehicleFilmsEdge {
-  """The item at the end of the edge"""
-  node: Film
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type VehiclePilotsConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [VehiclePilotsEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  pilots: [Person]
-}
-
-"""An edge in a connection."""
-type VehiclePilotsEdge {
-  """The item at the end of the edge"""
-  node: Person
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-"""A connection to a list of items."""
-type VehiclesConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [VehiclesEdge]
-
-  """
-  A count of the total number of objects in this connection, ignoring pagination.
-  This allows a client to fetch the first five objects by passing "5" as the
-  argument to "first", then fetch the total count so it could display "5 of 83",
-  for example.
-  """
-  totalCount: Int
-
-  """
-  A list of all of the objects returned in the connection. This is a convenience
-  field provided for quickly exploring the API; rather than querying for
-  "{ edges { node } }" when no edge data is needed, this field can be be used
-  instead. Note that when clients like Relay need to fetch the "cursor" field on
-  the edge to enable efficient pagination, this shortcut cannot be used, and the
-  full "{ edges { node } }" version should be used instead.
-  """
-  vehicles: [Vehicle]
-}
-
-"""An edge in a connection."""
-type VehiclesEdge {
-  """The item at the end of the edge"""
-  node: Vehicle
-
-  """A cursor for use in pagination"""
-  cursor: String!
+{
+  "__schema": {
+    "queryType": {
+      "name": "Query"
+    },
+    "mutationType": null,
+    "subscriptionType": null,
+    "types": [
+      {
+        "kind": "OBJECT",
+        "name": "Query",
+        "description": null,
+        "fields": [
+          {
+            "name": "_entities",
+            "description": null,
+            "args": [
+              {
+                "name": "representations",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "NON_NULL",
+                      "name": null,
+                      "ofType": {
+                        "kind": "SCALAR",
+                        "name": "_Any",
+                        "ofType": null
+                      }
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "UNION",
+                  "name": "_Entity",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "_service",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "_Service",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "countries",
+            "description": null,
+            "args": [
+              {
+                "name": "filter",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "CountryFilterInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Country",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "country",
+            "description": null,
+            "args": [
+              {
+                "name": "code",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Country",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "continents",
+            "description": null,
+            "args": [
+              {
+                "name": "filter",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "ContinentFilterInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Continent",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "continent",
+            "description": null,
+            "args": [
+              {
+                "name": "code",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Continent",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "languages",
+            "description": null,
+            "args": [
+              {
+                "name": "filter",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "LanguageFilterInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Language",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "language",
+            "description": null,
+            "args": [
+              {
+                "name": "code",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Language",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "_Any",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "UNION",
+        "name": "_Entity",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "Country",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Continent",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Language",
+            "ofType": null
+          }
+        ]
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Country",
+        "description": null,
+        "fields": [
+          {
+            "name": "code",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "native",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "phone",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "continent",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Continent",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "capital",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "currency",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "languages",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Language",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "emoji",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "emojiU",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "states",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "State",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "ID",
+        "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "String",
+        "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Continent",
+        "description": null,
+        "fields": [
+          {
+            "name": "code",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "countries",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Country",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Language",
+        "description": null,
+        "fields": [
+          {
+            "name": "code",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "native",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rtl",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean",
+        "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "State",
+        "description": null,
+        "fields": [
+          {
+            "name": "code",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "country",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Country",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "_Service",
+        "description": null,
+        "fields": [
+          {
+            "name": "sdl",
+            "description": "The sdl representing the federated service capabilities. Includes federation directives, removes federation types, and includes rest of full schema after schema directives have been applied",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "CountryFilterInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "code",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "currency",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "continent",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "StringQueryOperatorInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "eq",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ne",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "nin",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "regex",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "glob",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "ContinentFilterInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "code",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "LanguageFilterInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "code",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Schema",
+        "description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations.",
+        "fields": [
+          {
+            "name": "types",
+            "description": "A list of all types supported by this server.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__Type",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "queryType",
+            "description": "The type that query operations will be rooted at.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mutationType",
+            "description": "If this server supports mutation, the type that mutation operations will be rooted at.",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "subscriptionType",
+            "description": "If this server support subscription, the type that subscription operations will be rooted at.",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "directives",
+            "description": "A list of all directives supported by this server.",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__Directive",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Type",
+        "description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name and description, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types.",
+        "fields": [
+          {
+            "name": "kind",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "__TypeKind",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fields",
+            "description": null,
+            "args": [
+              {
+                "name": "includeDeprecated",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": "false"
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Field",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "interfaces",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Type",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "possibleTypes",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__Type",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "enumValues",
+            "description": null,
+            "args": [
+              {
+                "name": "includeDeprecated",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": "false"
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__EnumValue",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "inputFields",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "__InputValue",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ofType",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "__Type",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "__TypeKind",
+        "description": "An enum describing what kind of type a given `__Type` is.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "SCALAR",
+            "description": "Indicates this type is a scalar.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "OBJECT",
+            "description": "Indicates this type is an object. `fields` and `interfaces` are valid fields.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INTERFACE",
+            "description": "Indicates this type is an interface. `fields` and `possibleTypes` are valid fields.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UNION",
+            "description": "Indicates this type is a union. `possibleTypes` is a valid field.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ENUM",
+            "description": "Indicates this type is an enum. `enumValues` is a valid field.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INPUT_OBJECT",
+            "description": "Indicates this type is an input object. `inputFields` is a valid field.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "LIST",
+            "description": "Indicates this type is a list. `ofType` is a valid field.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NON_NULL",
+            "description": "Indicates this type is a non-null. `ofType` is a valid field.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Field",
+        "description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type.",
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "args",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__InputValue",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isDeprecated",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deprecationReason",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__InputValue",
+        "description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value.",
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "__Type",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "defaultValue",
+            "description": "A GraphQL-formatted string representing the default value for this input value.",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__EnumValue",
+        "description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string.",
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isDeprecated",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deprecationReason",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "__Directive",
+        "description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL's execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor.",
+        "fields": [
+          {
+            "name": "name",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "locations",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "ENUM",
+                    "name": "__DirectiveLocation",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "args",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "__InputValue",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "__DirectiveLocation",
+        "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "QUERY",
+            "description": "Location adjacent to a query operation.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "MUTATION",
+            "description": "Location adjacent to a mutation operation.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SUBSCRIPTION",
+            "description": "Location adjacent to a subscription operation.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FIELD",
+            "description": "Location adjacent to a field.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FRAGMENT_DEFINITION",
+            "description": "Location adjacent to a fragment definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FRAGMENT_SPREAD",
+            "description": "Location adjacent to a fragment spread.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INLINE_FRAGMENT",
+            "description": "Location adjacent to an inline fragment.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "VARIABLE_DEFINITION",
+            "description": "Location adjacent to a variable definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SCHEMA",
+            "description": "Location adjacent to a schema definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SCALAR",
+            "description": "Location adjacent to a scalar definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "OBJECT",
+            "description": "Location adjacent to an object type definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FIELD_DEFINITION",
+            "description": "Location adjacent to a field definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ARGUMENT_DEFINITION",
+            "description": "Location adjacent to an argument definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INTERFACE",
+            "description": "Location adjacent to an interface definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "UNION",
+            "description": "Location adjacent to a union definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ENUM",
+            "description": "Location adjacent to an enum definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ENUM_VALUE",
+            "description": "Location adjacent to an enum value definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INPUT_OBJECT",
+            "description": "Location adjacent to an input object type definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INPUT_FIELD_DEFINITION",
+            "description": "Location adjacent to an input object field definition.",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      }
+    ],
+    "directives": [
+      {
+        "name": "include",
+        "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
+        "locations": [
+          "FIELD",
+          "FRAGMENT_SPREAD",
+          "INLINE_FRAGMENT"
+        ],
+        "args": [
+          {
+            "name": "if",
+            "description": "Included when true.",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      },
+      {
+        "name": "skip",
+        "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
+        "locations": [
+          "FIELD",
+          "FRAGMENT_SPREAD",
+          "INLINE_FRAGMENT"
+        ],
+        "args": [
+          {
+            "name": "if",
+            "description": "Skipped when true.",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      },
+      {
+        "name": "deprecated",
+        "description": "Marks an element of a GraphQL schema as no longer supported.",
+        "locations": [
+          "FIELD_DEFINITION",
+          "ARGUMENT_DEFINITION",
+          "INPUT_FIELD_DEFINITION",
+          "ENUM_VALUE"
+        ],
+        "args": [
+          {
+            "name": "reason",
+            "description": "Explains why this element was deprecated, usually also including a suggestion for how to access supported similar data. Formatted using the Markdown syntax, as specified by [CommonMark](https://commonmark.org/).",
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": "\"No longer supported\""
+          }
+        ]
+      },
+      {
+        "name": "specifiedBy",
+        "description": "Exposes a URL that specifies the behaviour of this scalar.",
+        "locations": [
+          "SCALAR"
+        ],
+        "args": [
+          {
+            "name": "url",
+            "description": "The URL that specifies the behaviour of this scalar.",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      },
+      {
+        "name": "key",
+        "description": null,
+        "locations": [
+          "OBJECT",
+          "INTERFACE"
+        ],
+        "args": [
+          {
+            "name": "fields",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      },
+      {
+        "name": "extends",
+        "description": null,
+        "locations": [
+          "OBJECT",
+          "INTERFACE"
+        ],
+        "args": []
+      },
+      {
+        "name": "external",
+        "description": null,
+        "locations": [
+          "OBJECT",
+          "FIELD_DEFINITION"
+        ],
+        "args": []
+      },
+      {
+        "name": "requires",
+        "description": null,
+        "locations": [
+          "FIELD_DEFINITION"
+        ],
+        "args": [
+          {
+            "name": "fields",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      },
+      {
+        "name": "provides",
+        "description": null,
+        "locations": [
+          "FIELD_DEFINITION"
+        ],
+        "args": [
+          {
+            "name": "fields",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ]
+      }
+    ]
+  }
 }

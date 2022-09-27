@@ -13,7 +13,7 @@ repositories {
 
 android {
     compileSdkVersion 32
-    buildToolsVersion "31.0.0"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.daniellms.star_wars_graphql_mvvm_design_patterns"
@@ -32,14 +32,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures {
         viewBinding true
+
     }
     apollo {
         packageName.set("com.daniellms.star_wars_graphql_mvvm_design_patterns")
@@ -47,13 +45,13 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.2.0"
-    def nav_version = "2.3.2"
-    def room_version = "2.3.0"
+    def lifecycle_version = "2.5.1"
+    def nav_version = "2.5.2"
+    def room_version = "2.4.3"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
