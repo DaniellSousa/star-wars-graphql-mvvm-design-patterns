@@ -1,2 +1,4 @@
 rootProject.name = "star-wars-graphql-mvvm-design-patterns"
 include ':app'
+include ':network'
+include ':core'
