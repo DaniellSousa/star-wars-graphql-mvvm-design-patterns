@@ -21,7 +21,7 @@ android {
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
-
+        buildConfigField ("String", "BASE_URL_GRAPH_QL", BASE_URL_GRAPH_QL)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -45,9 +45,6 @@ android {
 }
 
 dependencies {
-    implementation project(path: ":core")
-    implementation project(path: ":network")
-
     def lifecycle_version = "2.5.1"
     def nav_version = "2.5.2"
     def room_version = "2.4.3"
