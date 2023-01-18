@@ -1,4 +1,4 @@
-package com.daniellms.star_wars_graphql_mvvm_design_patterns
+package com.daniellms.star_wars_graphql_mvvm_design_patterns.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,15 +18,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val apolloClient = ApolloClient.Builder()
-            .serverUrl("https://e72b-2804-7f7-e289-c46d-9071-342f-19b1-3ef7.sa.ngrok.io/")
-            .build()
-
-        runBlocking {
-            withContext(Dispatchers.IO) {
-                val response = apolloClient.query(GetFilmsQuery()).execute()
-                Log.i("RESULT GRAPHQL", "${response.data?.allFilms?.films}")
-            }
-        }
+//        val apolloClient = ApolloClient.Builder()
+//            .serverUrl("https://e72b-2804-7f7-e289-c46d-9071-342f-19b1-3ef7.sa.ngrok.io/")
+//            .build()
+//
+//        runBlocking {
+//            withContext(Dispatchers.IO) {
+//                val response = apolloClient.query(GetFilmsQuery()).execute()
+//                Log.i("RESULT GRAPHQL", "${response.data?.allFilms?.films}")
+//            }
+//        }
     }
 }
