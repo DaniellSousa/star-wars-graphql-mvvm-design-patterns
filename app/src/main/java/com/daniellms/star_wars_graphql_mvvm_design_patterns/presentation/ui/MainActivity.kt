@@ -17,16 +17,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        val apolloClient = ApolloClient.Builder()
-//            .serverUrl("https://e72b-2804-7f7-e289-c46d-9071-342f-19b1-3ef7.sa.ngrok.io/")
-//            .build()
-//
-//        runBlocking {
-//            withContext(Dispatchers.IO) {
-//                val response = apolloClient.query(GetFilmsQuery()).execute()
-//                Log.i("RESULT GRAPHQL", "${response.data?.allFilms?.films}")
-//            }
-//        }
     }
 }
