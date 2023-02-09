@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">star-wars-graphql-mvvm-design-patterns</string>
+    <string name="label_movies">Star Wars Movies</string>
 </resources>

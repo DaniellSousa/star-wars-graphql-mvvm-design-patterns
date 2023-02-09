@@ -12,7 +12,7 @@ abstract class BaseFragment<VB: ViewBinding>(
 ): Fragment() {
 
     private var _binding: VB? = null
-    private val binding: VB
+    open val binding: VB?
         get() = _binding as VB
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ abstract class BaseFragment<VB: ViewBinding>(
         this._binding = bindingInflater.invoke(inflater)
         if (_binding == null)
             throw IllegalArgumentException("Binding can't be NULL")
-        return this.binding.root
+        return this.binding?.root
     }
 
 }
